@@ -9,6 +9,8 @@ import android.support.annotation.NonNull;
 import com.strudelauxpommes.androidcomponents.demo.data_team.model.UIData;
 import com.strudelauxpommes.androidcomponents.demo.view_team.FormViewModel;
 
+import java.util.Date;
+
 /**
  * A Repository is used to combine one or several data source. The Repository is agnostic of it's
  * data source implementation. That means that the caller class does not know where the data is
@@ -30,6 +32,7 @@ public class UIDataRepository {
         UIData defaultUIData = new UIData();
         defaultUIData.setBackgroundColor(FormViewModel.BackgroundColor.blue);
         defaultUIData.setFontSize(24);
+        defaultUIData.setDate(new Date());
         return new DatabaseResource<UIData>(defaultUIData) {
             @NonNull
             @Override

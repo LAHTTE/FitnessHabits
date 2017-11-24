@@ -5,6 +5,8 @@ import android.arch.persistence.room.PrimaryKey;
 
 import com.strudelauxpommes.androidcomponents.demo.view_team.FormViewModel;
 
+import java.util.Date;
+
 /**
  * An entity to be saved in the database.
  *
@@ -17,6 +19,7 @@ public class UIData {
     private int id;
     private FormViewModel.BackgroundColor backgroundColor;
     private int fontSize;
+    private Date date;
 
     public int getId() {
         return id;
@@ -40,5 +43,13 @@ public class UIData {
 
     public void setFontSize(int fontSize) {
         this.fontSize = fontSize;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

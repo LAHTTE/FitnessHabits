@@ -8,11 +8,13 @@ import android.support.annotation.ColorRes;
 import com.strudelauxpommes.androidcomponents.demo.data_team.UIDataRepository;
 import com.strudelauxpommes.androidcomponents.demo.data_team.model.UIData;
 
+import java.util.Date;
+
 /**
  * A ViewModel to hold the information and actions required by a view. It's the abstraction that
  * connect the Data layer to the View layer. Neither the View nor the Data layers should be aware of
  * each others thanks to this class.
- *
+ * <p>
  * Created by Marc-Antoine Sauvé on 11/11/17.
  */
 public class FormViewModel extends ViewModel {
@@ -21,13 +23,15 @@ public class FormViewModel extends ViewModel {
         orange(android.R.color.holo_orange_light),
         purple(android.R.color.holo_purple);
 
-        private final @ColorRes int color;
+        private final @ColorRes
+        int color;
 
         BackgroundColor(@ColorRes int color) {
             this.color = color;
         }
 
-        public @ColorRes int getColor() {
+        public @ColorRes
+        int getColor() {
             return color;
         }
     }
@@ -39,6 +43,7 @@ public class FormViewModel extends ViewModel {
     // ViewModel live data
     private LiveData<BackgroundColor> backgroundColor;
     private LiveData<Integer> fontSize;
+    private LiveData<Date> date;
 
     public static final int minFontSize = 12;
     public static final int maxFontSize = 36;
@@ -50,6 +55,7 @@ public class FormViewModel extends ViewModel {
         // Transform the Data layer LiveData to the ModelView live data
         backgroundColor = Transformations.map(uiDataLiveData, UIData::getBackgroundColor);
         fontSize = Transformations.map(uiDataLiveData, UIData::getFontSize);
+        date = Transformations.map(uiDataLiveData, UIData::getDate);
     }
 
     // Only ViewModel LiveData should be exposed. The Data layer should not be exposed by the ViewModel.
@@ -60,6 +66,10 @@ public class FormViewModel extends ViewModel {
 
     public LiveData<Integer> getFontSize() {
         return fontSize;
+    }
+
+    public LiveData<Date> getDate() {
+        return date;
     }
 
     public void setBackgroundColor(BackgroundColor backgroundColor) {
@@ -74,6 +84,14 @@ public class FormViewModel extends ViewModel {
         UIData currentUIData = uiDataLiveData.getValue();
         if (currentUIData != null) {
             currentUIData.setFontSize(fontSize);
+            repository.saveUIData(currentUIData);
+        }
+    }
+
+    public void setDate(Date date) {
+        UIData currentUIData = uiDataLiveData.getValue();
+        if (currentUIData != null) {
+            currentUIData.setDate(date);
             repository.saveUIData(currentUIData);
         }
     }

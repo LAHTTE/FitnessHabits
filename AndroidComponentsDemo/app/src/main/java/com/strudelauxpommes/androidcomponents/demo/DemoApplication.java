@@ -22,7 +22,8 @@ public class DemoApplication extends Application {
     @MainThread
     public AppDatabase getDatabase() {
         if (database == null) {
-            database = Room.databaseBuilder(this, AppDatabase.class, "demo-database").build();
+
+            database = Room.databaseBuilder(this, AppDatabase.class, "demo-database").fallbackToDestructiveMigration().build();
         }
         return database;
     }

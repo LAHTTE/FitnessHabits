@@ -22,6 +22,10 @@ import com.strudelauxpommes.androidcomponents.demo.view_team.FormViewModel;
 
 import com.strudelauxpommes.androidcomponents.demo.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     private FormViewModel viewModel;
@@ -72,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         // Step 5: Bind the UI events to the ViewModel
         // Initialize the actions of the UI. These actions should only modify the viewModel.
         // The viewModel contains the logic for the update and the view will be refreshed automatically.
@@ -84,5 +89,28 @@ public class MainActivity extends AppCompatActivity {
         buttonTextSizePicker.setOnValueChangedListener((numberPicker, oldFontSize, newFontSize) ->
                 viewModel.setFontSize(newFontSize));
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        viewModel.getDate().observe(this, date -> {
+            if (date != null) {
+                MenuItem dateMenu = menu.findItem(R.id.datepicker);
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                dateMenu.setTitle(sdf.format(date));
+            }
+        });
+
+        viewModel.setDate(new Date());
+        return true;
+    }
+
+    public void changeDate(MenuItem mi) {
+        if(mi.getItemId()==R.id.datepicker){
+            viewModel.setDate(new Date(1994,03,14));
+        }
+    }
+
 
 }
