@@ -50,11 +50,8 @@ public class PhysicalActivityDetail extends AppCompatActivity {
         for (int i = 0; i < 4; i++) {
 
             final EditText activity = new EditText(this);
-            activity.setText("");
             final EditText dure = new EditText(this);
-            dure.setText("");
             EditText intensive = new EditText(this);
-            intensive.setText("");
 
             Button fav = new Button(this);
             fav.setText("Fav");
