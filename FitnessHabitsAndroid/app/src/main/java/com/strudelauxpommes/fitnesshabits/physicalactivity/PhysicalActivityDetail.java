@@ -15,12 +15,15 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.strudelauxpommes.fitnesshabits.R;
+
+import java.util.ArrayList;
 
 public class PhysicalActivityDetail extends AppCompatActivity {
 
@@ -40,37 +43,45 @@ public class PhysicalActivityDetail extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+/*
         LinearLayout tableActivity = (LinearLayout) findViewById(R.id.table);
 
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        */
 
-        for(int i = 0; i < 3; i++){
+        ArrayList<PhysicalActivity> ListItemTable = new ArrayList<PhysicalActivity>();
+        for (int i = 0; i < 4; i++) {
 
 
-            final EditText et = new EditText(this);
-            et.setText("");
+            EditText activity = new EditText(this);
+            activity.setText("Activity");
+
+
+            final EditText activity = new EditText(this);
+            activity.setText("");
             final EditText dure = new EditText(this);
             dure.setText("");
             EditText intensive = new EditText(this);
             intensive.setText("");
-            Button b = new Button(this);
-            b.setText("Dynamic Button");
+
+            Button fav = new Button(this);
+            fav.setText("Fav");
+
 
             TableLayout tl = (TableLayout) findViewById(R.id.table);
             TableRow tr = new TableRow(this);
             tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-            
 
-            b.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-            et.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+
+            fav.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+            activity.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
             dure.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
             intensive.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-
-            et.setInputType(InputType.TYPE_CLASS_TEXT);
-            et.setEms(7);
-            et.setImeOptions(EditorInfo.IME_ACTION_DONE);
-            et.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            
+            activity.setInputType(InputType.TYPE_CLASS_TEXT);
+            activity.setEms(7);
+            activity.setImeOptions(EditorInfo.IME_ACTION_DONE);
+            activity.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 @Override
                 public boolean onEditorAction(TextView view, int actionId, KeyEvent keyEvent) {
                     if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -79,10 +90,10 @@ public class PhysicalActivityDetail extends AppCompatActivity {
                     return false;
                 }
             });
-            et.setOnLongClickListener(new View.OnLongClickListener() {
+            activity.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    et.getText().clear();
+                    activity.getText().clear();
                     return false;
                 }
             });
@@ -126,16 +137,25 @@ public class PhysicalActivityDetail extends AppCompatActivity {
             });
 
             intensive.setEms(2);
-            b.setEms(2);
+            fav.setEms(2);
 
 
-            tr.addView(et);
+
+
+            tr.addView(fav);
+            tr.addView(activity);
             tr.addView(dure);
             tr.addView(intensive);
-            tr.addView(b);
+
+            PhysicalActivity physicalActivity = new PhysicalActivity(
+                    activity.getText().toString(),
+                    dure.getText().toString(),
+                    intensive.getText().toString(),
+                    true);
+
+            ListItemTable.add(physicalActivity);
 
             /* Add row to TableLayout. */
-            //tr.setBackgroundResource(R.drawable.sf_gradient_03);
             tl.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
         }
 
