@@ -66,7 +66,7 @@ public class PhysicalActivityFragment extends Fragment {
     }
 
     public void openNewActivity(View view) {
-        Intent in = new Intent(getActivity(), SubPhysicalActivity.class);
+        Intent in = new Intent(getActivity(), PhysicalActivityDetail.class);
         startActivity(in);
     }
 
