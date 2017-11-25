@@ -9,13 +9,10 @@ import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -52,11 +49,6 @@ public class PhysicalActivityDetail extends AppCompatActivity {
         ArrayList<PhysicalActivity> ListItemTable = new ArrayList<PhysicalActivity>();
         for (int i = 0; i < 4; i++) {
 
-
-            EditText activity = new EditText(this);
-            activity.setText("Activity");
-
-
             final EditText activity = new EditText(this);
             activity.setText("");
             final EditText dure = new EditText(this);
@@ -77,9 +69,9 @@ public class PhysicalActivityDetail extends AppCompatActivity {
             activity.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
             dure.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
             intensive.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-            
+
             activity.setInputType(InputType.TYPE_CLASS_TEXT);
-            activity.setEms(7);
+            activity.setEms(4);
             activity.setImeOptions(EditorInfo.IME_ACTION_DONE);
             activity.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 @Override
@@ -99,7 +91,7 @@ public class PhysicalActivityDetail extends AppCompatActivity {
             });
 
             dure.setInputType(InputType.TYPE_CLASS_NUMBER);
-            dure.setEms(4);
+            dure.setEms(3);
             dure.setImeOptions(EditorInfo.IME_ACTION_DONE);
             dure.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 @Override

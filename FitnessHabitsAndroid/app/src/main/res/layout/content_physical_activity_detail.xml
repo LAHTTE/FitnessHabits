@@ -158,9 +158,5 @@
             android:layout_height="wrap_content">
         </TableLayout>
     </ScrollView>
-<<<<<<< HEAD
 
-</LinearLayout>
-=======
 </RelativeLayout>
->>>>>>> 7b4ceceac06e003672634d37453e091a3275be1b
