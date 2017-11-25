@@ -1,10 +1,7 @@
 <resources>
     <string name="app_name">Fitness Habits</string>
-<<<<<<< HEAD
-    <string name="title_activity_physical_detail">physicalActivityDetail</string>
-=======
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
->>>>>>> ce25becb36b8e5829d2089855194c57876799c35
+    <string name="title_activity_physical_detail">physicalActivityDetail</string>
+    <string name="title_activity_physical_fragment">PhysicalActivityFragment</string>
 </resources>

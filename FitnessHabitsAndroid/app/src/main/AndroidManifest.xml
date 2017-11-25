@@ -16,7 +16,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".physicalactivity.SubPhysicalActivity"></activity>
+        <activity
+            android:name=".physicalactivity.PhysicalActivityDetail"
+            android:label="@string/title_activity_physical_detail"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.strudelauxpommes.fitnesshabits.MainActivity" />
+        </activity>
+        <activity
+            android:name=".physicalactivity.PhysicalActivityFragment"
+            android:label="@string/title_activity_physical_fragment"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.strudelauxpommes.fitnesshabits.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
